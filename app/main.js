@@ -1,9 +1,22 @@
-import {controller} from './js/controller/controller.js'
+// import {controller} from './js/controller/controller'
+import {NavBar} from './js/elements/NavBar'
+import {Personal} from './js/elements/Personal'
+
+let body = $("body");
+
 
 $(window).on('load', () => {
-    console.log("Page loaded");
-    TweenMax.delayedCall(1, () => {
-        controller.init();
-    })
-
+    init()
 });
+
+
+let init = () => {
+    body.css("background-color", "yellow")
+    let navBar = NavBar()
+    body.append(navBar)
+
+    let personal = Personal()
+    personal.init()
+
+    navBar.append(personal)
+}

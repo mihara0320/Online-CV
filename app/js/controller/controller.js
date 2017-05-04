@@ -1,10 +1,10 @@
-import {aboutMe} from "./aboutMe"
-
-const controller = {
-
-    init: () => {
-        aboutMe.init();
-    }
-}
-
-export {controller}
+// import {aboutMe} from "./aboutMe"
+//
+// const controller = {
+//
+//     init: () => {
+//         aboutMe.init();
+//     }
+// }
+//
+// export {controller}
