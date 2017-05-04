@@ -2,7 +2,7 @@ import {aboutMe} from "./aboutMe"
 
 const controller = {
 
-    let init = () => {
+    init: () => {
         aboutMe.init();
     }
 }

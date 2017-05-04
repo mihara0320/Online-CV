@@ -1,11 +1,11 @@
 const aboutMe = {
 
-    let init = () => {
+    init: () => {
         let el = $("#aboutMe")
-        el.alpha = 0;
+        el.opacity = 0
         el.append("About Me")
         el.css("font-size", "200%")
-        TweenMax.to(el, 3, {alpha:1, onComplete: () => {
+        TweenMax.to(el, 3, {opacity:1, onComplete: () => {
             console.log('done')
         }})
     }

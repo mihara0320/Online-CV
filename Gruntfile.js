@@ -3,6 +3,7 @@
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         clean: {
             all: {
                 files: [
@@ -11,35 +12,29 @@ module.exports = function (grunt) {
             }
         },
         browserify: {
-            options: {
-                transform: [
-                    ['babelify', {presets: ['es2015']}]
-                ],
-            },
-            files: {
-                'output/main.js': ['app/main.js']
+			development: {
+                options: {
+					transform: [
+					['babelify', {presets: ['es2015']}]
+					],
+                    browserifyOptions: {
+                        debug: true,
+                    }
+                },
+                files: {
+                    'output/main.js': ['app/main.js']
+                },
             },
         },
+
         copy: {
             static: {
                 files: [{
 					expand: true,
 					cwd: 'app/',
-					src: ['*', 'js/controller/*', 'css/*'],
+					src: ['css/*', 'index.html'],
 					dest: 'output/'
 				}]
-            }
-        },
-        watch: {
-            livereload: {
-                options: {
-                    livereload: '<%= connect.options.livereload %>'
-                },
-                files: [
-                    'app/{,*/}*.html',
-                    'app/css/{,*/}*.css',
-                    'app/js/{,*/}*.js'
-                ]
             }
         },
         watch: {
@@ -59,18 +54,11 @@ module.exports = function (grunt) {
                 }
             }
         },
-
     });
 
     grunt.registerTask('update_resources', ['clean:all', 'copy:static']);
-    grunt.registerTask('build', ['update_resources', 'browserify']);
+    grunt.registerTask('build', ['update_resources', 'browserify:development']);
     grunt.registerTask('run', ['connect', 'watch']);
-    // grunt.registerTask('server', function (target) {
-    //     grunt.task.run([
-    //         'connect',
-    //         'watch'
-    //     ]);
-    // });
-    grunt.registerTask('default', ['build']);
     grunt.registerTask('start', ['build', 'run']);
+    grunt.registerTask('default', ['start']);
 };
