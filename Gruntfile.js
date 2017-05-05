@@ -22,7 +22,7 @@ module.exports = function (grunt) {
                     }
                 },
                 files: {
-                    'output/main.js': ['app/main.js']
+                    'output/js/main.js': ['app/js/main.js']
                 },
             },
         },
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                 files: [{
 					expand: true,
 					cwd: 'app/',
-					src: ['css/*', 'index.html'],
+					src: ['css/*', 'assets/**', 'index.html'],
 					dest: 'output/'
 				}]
             }
