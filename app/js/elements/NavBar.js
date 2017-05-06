@@ -3,22 +3,40 @@ const NavBar = () => {
     let el = document.createElement('div');
     el.id = "navBar"
     el.className = "row"
-    el.tabs = []
 
-    let tabs = ["General", "Experience", "Education", "Skills"]
+    let categories = ["General", "Experience", "Education", "Skills"]
 
     Object.assign(el, {
-        init: (navBar) => {
-            for (var i = 0; i < tabs.length; i++) {
-                let tab =  document.createElement('div');
-                tab.id = tabs[i]
-                tab.className = "col"
-                navBar.append(tab)
-                $("#"+tab.id).css("width", "20vw")
-                $("#"+tab.id).css("height", "10vh")
-                $("#"+tab.id).html(tab.id)
+        options: [null, null, null, null],
+        init: (container) => {
+            container.append(el)
+            let self = $("#"+el.id)
 
-                el.tabs[i] = tab
+            for (var i = 0; i < categories.length; i++) {
+                let category =  document.createElement('div');
+                category.id = "category_" + categories[i]
+                category.className = "col"
+                self.append(category)
+
+                let buffer = $("#" + category.id)
+                buffer.css("width", "20vw")
+                buffer.css("height", "10vh")
+
+                let button = document.createElement('button');
+                button.id = category.id + "_button"
+                button.className = "button"
+                buffer.append(button)
+
+                let btn = $("#"+button.id)
+                btn.html(categories[i])
+                btn.css("opacity", "0")
+                el.options[i] = btn
+            }
+            el.showOptions();
+        },
+        showOptions: () => {
+            for (var i = 0; i < el.options.length; i++) {
+                TweenMax.to(el.options[i], 3, {opacity: 1})
             }
         },
     })

@@ -1,3 +1,3 @@
 export * from './Container'
 export * from './NavBar'
-export * from './Personal'
+export * from './General'
