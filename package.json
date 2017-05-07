@@ -5,8 +5,8 @@
   "main": "index.html",
   "author": "Masaki Ihara",
   "scripts": {
-    "postinstall": "grunt run",
-},
+    "start": "grunt start"
+  },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
