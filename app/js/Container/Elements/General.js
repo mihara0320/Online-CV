@@ -1,9 +1,12 @@
+import {eventEmitter} from '../../Controller'
+
 const General = () => {
     let el = document.createElement('div');
     el.id = "general"
     el.className = "col"
 
     Object.assign(el, {
+        firstTime: true,
         up: null,
         down: null,
         myPhoto: null,
@@ -21,20 +24,25 @@ const General = () => {
             self.append(photo)
 
             let info = document.createElement('div');
-            info.id = "info"
+            info.id = "generalInfo"
             info.className = "row"
             self.append(info)
 
-            el.up = $("#"+photo.id)
-            el.up.css("width", "100%")
-            el.up.css("height", "30%")
+            if(el.firstTime){
+                el.up = $("#"+photo.id)
+                el.up.css("width", "100%")
+                el.up.css("height", "30%")
 
-            el.down = $("#"+info.id)
-            el.down.css("width", "100%")
-            el.down.css("height", "70%")
+                el.down = $("#"+info.id)
+                el.down.css("width", "100%")
+                el.down.css("height", "70%")
 
-            el.initMyPhoto()
-            el.initInfo()
+                el.initMyPhoto()
+                el.initInfo()
+                el.firstTime = false
+            }
+
+            el.showPage()
         },
         initMyPhoto: () => {
             let pictrue = document.createElement("img")
@@ -98,29 +106,34 @@ const General = () => {
             }
         },
         showPage: () => {
-            let showTween = new TimelineMax({onComplete: ()=>{ console.log("General Tween Completed") }})
+            eventEmitter.emit("Tween Started")
+            let showTween = new TimelineMax({onComplete: ()=>{ eventEmitter.emit("Tween Completed") }})
             let counter = 0
-            showTween.to(el.myPhoto, 0.5, {opacity: 1})
+            showTween.to(el.myPhoto, 0.3, {opacity: 1})
             for (var i = 0; i < el.infoContents.length; i++) {
                 el.infoContents[i].css("opacity", "1")
                 if(counter%2==0){
-                    showTween.fromTo(el.infoContents[i], 0.1, {opacity : 0, x: + 100}, {opacity : 1, x: 0})
+                    showTween.fromTo(el.infoContents[i], 0.08, {opacity : 0, x: + 100}, {opacity : 1, x: 0})
                 }else{
-                    showTween.fromTo(el.infoContents[i], 0.1, {opacity : 0, x: - 100}, {opacity : 1, x: 0})
+                    showTween.fromTo(el.infoContents[i], 0.08, {opacity : 0, x: - 100}, {opacity : 1, x: 0})
                 }
                 counter++
             }
             showTween.play();
         },
         cleanPage:() => {
-            let cleanTween = new TimelineMax({onComplete: ()=>{ console.log("General Tween Cleaned") }})
+            eventEmitter.emit("Tween Started")
+            let cleanTween = new TimelineMax({onComplete: ()=>{
+                $("#container").html("")
+                eventEmitter.emit("Tween Completed")
+             }})
             let counter = 0
-            cleanTween.to(el.myPhoto, 0.5, {opacity: 0})
+            cleanTween.to(el.myPhoto, 0.2, {opacity: 0})
             for (var i = 0; i < el.infoContents.length; i++) {
                 if(counter%2==0 ){
-                    cleanTween.to(el.infoContents[i], 0.1, {opacity : 0, x: - 100})
+                    cleanTween.to(el.infoContents[i], 0.05, {opacity : 0, x: - 100})
                 }else{
-                    cleanTween.to(el.infoContents[i], 0.1, {opacity : 0, x: + 100},)
+                    cleanTween.to(el.infoContents[i], 0.05, {opacity : 0, x: + 100},)
                 }
                 counter++
             }

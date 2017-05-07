@@ -1,12 +1,18 @@
-import {NavBar, Container} from './elements'
+import {NavBar} from './NavBar'
+import {Container, OPTIONS} from './Container'
+
+var EventEmitter = require('eventemitter3');
+const eventEmitter = new EventEmitter()
 
 const Controller = () => {
-    let el = Object;
+    let el = EventEmitter;
 
     Object.assign(el, {
         main: null,
         navBar: null,
         container: null,
+        tweenPlaying: false,
+
         init: () => {
             el.main = $("#main")
             el.main.addClass("col")
@@ -19,17 +25,32 @@ const Controller = () => {
             el.container.init(el.main)
 
             el.initBtn();
+
+            eventEmitter.on("Tween Started", ()=>{ el.tweenPlaying = true})
+            eventEmitter.on("Tween Completed", ()=>{ el.tweenPlaying = false})
         },
         initBtn: () => {
             $("#category_General_button").click(() => {
-                console.log("General Clicked");
-                if(el.container.isShowing){
-                    el.container.general.cleanPage()
-                    el.container.isShowing = false
-                } else {
-                    TweenMax.delayedCall(0.5, () => {
-                        el.container.general.showPage()
-                        el.container.isShowing = true
+                if(el.container.currentPage === null){
+                    el.container.showGeneral()
+                } else if (el.container.currentPage === OPTIONS.GENERAL || el.tweenPlaying){
+                    return
+                } else{
+                    el.container.clean()
+                    eventEmitter.once("Tween Completed", ()=>{
+                        el.container.showGeneral()
+                    })
+                }
+            })
+            $("#category_Experience_button").click(() => {
+                if(el.container.currentPage === null){
+                    el.container.showExperience()
+                } else if (el.container.currentPage === OPTIONS.EXPERIENCE || el.tweenPlaying){
+                    return
+                } else{
+                    el.container.clean()
+                    eventEmitter.once("Tween Completed", ()=>{
+                        el.container.showExperience()
                     })
                 }
             })
@@ -41,4 +62,4 @@ const Controller = () => {
     return el
 }
 
-export {Controller}
+export {Controller, eventEmitter}
