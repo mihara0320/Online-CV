@@ -5,8 +5,7 @@
   "main": "index.html",
   "author": "Masaki Ihara",
   "scripts": {
-    "postinstall": "grunt uglify",
-    "start": "grunt start"
+    "start": "grunt heroku"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

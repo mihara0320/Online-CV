@@ -67,4 +67,6 @@ module.exports = function (grunt) {
     grunt.registerTask('run', ['connect', 'watch']);
     grunt.registerTask('start', ['build', 'run']);
     grunt.registerTask('default', ['start']);
+    grunt.registerTask('heroku', ['build']);
+
 };
