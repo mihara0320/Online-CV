@@ -4,6 +4,12 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        uglify: {
+            build: {
+                src: 'output/js/main.js',
+                dest: 'output/js/main.min.js'
+            }
+        },
         clean: {
             all: {
                 files: [
@@ -55,7 +61,7 @@ module.exports = function (grunt) {
             }
         },
     });
-
+    grunt.registerTask('uglify', ['uglify']);
     grunt.registerTask('update_resources', ['clean:all', 'copy:static']);
     grunt.registerTask('build', ['update_resources', 'browserify:development']);
     grunt.registerTask('run', ['connect', 'watch']);

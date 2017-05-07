@@ -5,6 +5,7 @@
   "main": "index.html",
   "author": "Masaki Ihara",
   "scripts": {
+    "postinstall": "grunt uglify",
     "start": "grunt start"
   },
   "devDependencies": {
