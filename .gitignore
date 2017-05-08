@@ -1,7 +1,2 @@
 # temp files
 npm-debug.log
-# project ignores
-node_modules
-output
-# jetBrains IDE ignores
-.idea
