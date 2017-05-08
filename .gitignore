@@ -1,2 +1,4 @@
 # temp files
 npm-debug.log
+node_modules
+output
