@@ -61,12 +61,10 @@ module.exports = function (grunt) {
             }
         },
     });
-    grunt.registerTask('uglify', ['uglify']);
     grunt.registerTask('update_resources', ['clean:all', 'copy:static']);
-    grunt.registerTask('build', ['update_resources', 'browserify:development', 'uglify']);
+    grunt.registerTask('build', ['update_resources', 'browserify:development']);
     grunt.registerTask('run', ['connect', 'watch']);
     grunt.registerTask('start', ['build', 'run']);
     grunt.registerTask('default', ['start']);
-    grunt.registerTask('heroku', ['build']);
 
 };
