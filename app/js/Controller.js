@@ -41,7 +41,7 @@ const Controller = () => {
                         el.container.showGeneral()
                     })
                 }
-            })
+            });
             $("#category_Experience_button").click(() => {
                 if(el.container.currentPage === null){
                     el.container.showExperience()
@@ -53,7 +53,31 @@ const Controller = () => {
                         el.container.showExperience()
                     })
                 }
-            })
+            });
+            $("#category_Education_button").click(() => {
+                if(el.container.currentPage === null){
+                    el.container.showEducation()
+                } else if (el.container.currentPage === OPTIONS.EDUCATION || el.tweenPlaying){
+                    return
+                } else{
+                    el.container.clean()
+                    eventEmitter.once("Tween Completed", ()=>{
+                        el.container.showEducation()
+                    })
+                }
+            });
+            $("#category_Skills_button").click(() => {
+                if(el.container.currentPage === null){
+                    el.container.showSkills()
+                } else if (el.container.currentPage === OPTIONS.SKILLS || el.tweenPlaying){
+                    return
+                } else{
+                    el.container.clean()
+                    eventEmitter.once("Tween Completed", ()=>{
+                        el.container.showSkills()
+                    })
+                }
+            });
         },
         clean: (div) => {
             div.html('')

@@ -19,8 +19,7 @@ const NavBar = () => {
                 self.append(category)
 
                 let buffer = $("#" + category.id)
-                buffer.css("width", "20vw")
-                buffer.css("height", "10vh")
+                buffer.css("width", "20vw").css("height", "10vh")
 
                 let button = document.createElement('button');
                 button.id = category.id + "_button"

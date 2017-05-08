@@ -1,8 +1,10 @@
-import {General, Experience} from './Elements'
+import {General, Experience, Education, Skills} from './Elements'
 
 const OPTIONS = {
     GENERAL: "general",
-    EXPERIENCE: "experience"
+    EXPERIENCE: "experience",
+    EDUCATION: "education",
+    SKILLS: "skills",
 }
 
 const Container = () => {
@@ -29,6 +31,18 @@ const Container = () => {
             el.experience = Experience()
             el.experience.init($("#container"))
         },
+        showEducation: () => {
+            console.log('%c Show Education ', 'background: #777; color: #bada55');
+            el.currentPage = OPTIONS.EDUCATION
+            el.education = Education()
+            el.education.init($("#container"))
+        },
+        showSkills: () => {
+            console.log('%c Show Skills ', 'background: #777; color: #bada55');
+            el.currentPage = OPTIONS.SKILLS
+            el.skills = Skills()
+            el.skills.init($("#container"))
+        },
         clean: () => {
             switch (el.currentPage) {
                 case OPTIONS.GENERAL:
@@ -37,7 +51,12 @@ const Container = () => {
                 case OPTIONS.EXPERIENCE:
                     el.experience.cleanPage()
                     break;
-                default:
+                case OPTIONS.EDUCATION:
+                    el.education.cleanPage()
+                    break;
+                case OPTIONS.SKILLS:
+                    el.skills.cleanPage()
+                    break;
             }
         }
     })

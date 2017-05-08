@@ -3,15 +3,15 @@ import {eventEmitter} from '../../Controller'
 const TEMPLATE = () => {
     let el = {
         period: document.createElement("div"),
-        pos: document.createElement("div"),
-        cmp: document.createElement("div"),
+        school: document.createElement("div"),
+        major: document.createElement("div"),
     }
     return el
 }
 
-const Experience = () => {
+const Skills = () => {
     let el = document.createElement('div');
-    el.id = "experience"
+    el.id = "education"
     el.className = "col"
 
     Object.assign(el, {
@@ -27,15 +27,14 @@ const Experience = () => {
             el.showPage();
         },
         initInfo: () => {
-            console.log("init ex");
             let self = $("#"+el.id)
             let data_0 = document.createElement("div")
-            data_0.id = "experience_data_0"
+            data_0.id = "skills_data_0"
             data_0.className = "colChild"
             self.append(data_0)
 
             let data_1 = document.createElement("div")
-            data_1.id = "experience_data_1"
+            data_1.id = "skills_data_1"
             data_1.className = "colChild"
             self.append(data_1)
 
@@ -44,12 +43,13 @@ const Experience = () => {
                 for (let key in temp) {
                     let info = temp[key]
                     info.id = "data_"+ i +"_"+ key
-                    $("#experience_data_" + i).append(info)
-                    $("#experience_data_" + i).css("height", "30%")
+                    $("#skills_data_" + i).append(info)
+                    $("#skills_data_" + i).css("height", "30%")
                                                 .css("width", "80%")
                                                 .css("font-size", "1em")
                                                 .css("font-weight", "bold")
                                                 .css("margin", "0")
+
 
                     let obj = $("#"+info.id)
                     obj.css("width", "100%")
@@ -58,25 +58,22 @@ const Experience = () => {
                     if (i === 0) {
                         switch (key) {
                             case "period": text = document.createTextNode("April 2013 - August 2015"); break;
-                            case "pos": text = document.createTextNode("Vedeo Transmission Administrator"); break;
-                            case "cmp": text = document.createTextNode("Worked at SoftBank Telecom"); break;
+                            case "school": text = document.createTextNode("Vedeo Transmission Administrator"); break;
+                            case "major": text = document.createTextNode("Worked at SoftBank Telecom"); break;
                         }
                         el.content_0.push(obj)
                     } else if (i === 1) {
                         switch (key) {
                             case "period": text = document.createTextNode("November 2016 - Present"); break;
-                            case "pos": text = document.createTextNode("Junior Front-end Developer"); break;
-                            case "cmp": text = document.createTextNode("Working at Ganalogics"); break;
+                            case "school": text = document.createTextNode("Junior Front-end Developer"); break;
+                            case "major": text = document.createTextNode("Working at Ganalogics"); break;
                         }
                         el.content_1.push(obj)
                     }
                     text.id = "text_"+key+"_"+i
                     h3.appendChild(text);
                     obj.append(h3);
-                    $("H3").css("font-size", "2em")
-                        .css("font-weight", "bold")
-                        .css("text-align", "center")
-                        .css("margin", "0")
+                    $("H3").css("font-size", "2em").css("font-weight", "bold").css("text-align", "center").css("margin", "0")
                 }
             }
         },
@@ -114,4 +111,4 @@ const Experience = () => {
     return el
 }
 
-export {Experience}
+export {Skills}

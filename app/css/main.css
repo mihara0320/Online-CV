@@ -1,5 +1,13 @@
-html, body {margin: 0; height: 100%; overflow: hidden}
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Inconsolata', monospace;
+}
 
+div {
+
+}
 /*Main*/
 .bgImageContainer{
     background-image: url("../assets/cv_background.jpg");
@@ -19,7 +27,6 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 #main {
     width: 100vw;
     height: 100vh;
-    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 
@@ -30,9 +37,11 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     font-size: 2em;
     font-weight: bold;
     background: rgba(200, 200, 200, 0.7);
+    font-family: 'Inconsolata', monospace;
 }
 
 .button {
+    font-family: 'Inconsolata', monospace;
     background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
