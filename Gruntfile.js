@@ -61,7 +61,7 @@ module.exports = function (grunt) {
             },
             server: {
                 options: {
-                    port: 80,
+                    port: process.env.PORT || 80,
                     base: 'output',
                     hostname: '*',
                     keepalive: true
@@ -74,6 +74,6 @@ module.exports = function (grunt) {
     grunt.registerTask('run', ['connect:local', 'watch']);
     grunt.registerTask('server', ['connect:server']);
     grunt.registerTask('start', ['build', 'run']);
-    grunt.registerTask('default', ['start']);
+    grunt.registerTask('default', ['server']);
 
 };
