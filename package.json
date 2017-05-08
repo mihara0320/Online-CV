@@ -5,7 +5,7 @@
   "main": "index.html",
   "author": "Masaki Ihara",
   "scripts": {
-    "postinstall": "./node_modules/grunt-cli/bin/grunt uglify",
+    "postinstall": "./node_modules/grunt-cli/bin/grunt build",
     "start": "./node_modules/grunt-cli/bin/grunt server"
   },
   "devDependencies": {

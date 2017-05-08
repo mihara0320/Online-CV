@@ -71,7 +71,7 @@ module.exports = function (grunt) {
     });
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.registerTask('update_resources', ['clean:all', 'copy:static']);
-    grunt.registerTask('build', ['update_resources', 'browserify:development']);
+    grunt.registerTask('build', ['update_resources', 'browserify:development', 'uglify']);
     grunt.registerTask('run', ['connect:local', 'watch']);
     grunt.registerTask('server', ['connect:server']);
     grunt.registerTask('start', ['build', 'run']);
