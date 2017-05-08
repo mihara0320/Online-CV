@@ -58,12 +58,21 @@ module.exports = function (grunt) {
                     hostname: '*',
                     keepalive: false
                 }
+            },
+            server: {
+                options: {
+                    port: 80,
+                    base: 'output',
+                    hostname: '*',
+                    keepalive: true
+                }
             }
         },
     });
     grunt.registerTask('update_resources', ['clean:all', 'copy:static']);
     grunt.registerTask('build', ['update_resources', 'browserify:development']);
-    grunt.registerTask('run', ['connect', 'watch']);
+    grunt.registerTask('run', ['connect:local', 'watch']);
+    grunt.registerTask('server', ['connect:server']);
     grunt.registerTask('start', ['build', 'run']);
     grunt.registerTask('default', ['start']);
 
