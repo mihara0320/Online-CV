@@ -4,10 +4,6 @@
   "description": "",
   "main": "index.html",
   "author": "Masaki Ihara",
-  "scripts": {
-      "postinstall": "grunt uglify",
-      "start": "grunt run"
-  },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
