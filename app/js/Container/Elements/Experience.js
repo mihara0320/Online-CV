@@ -47,8 +47,10 @@ const Experience = () => {
                     $("#experience_data_" + i).append(info)
                     $("#experience_data_" + i).css("height", "30%")
                                                 .css("width", "80%")
-                                                .css("font-size", "2em")
+                                                .css("font-size", "1em")
                                                 .css("font-weight", "bold")
+                                                .css("margin", "0")
+
                     let obj = $("#"+info.id)
                     obj.css("width", "100%")
                     var h3 = document.createElement("H3");
@@ -71,7 +73,7 @@ const Experience = () => {
                     text.id = "text_"+key+"_"+i
                     h3.appendChild(text);
                     obj.append(h3);
-                    $("H3").css("font-size", "1em").css("font-weight", "bold").css("text-align", "center")
+                    $("H3").css("font-size", "1em").css("font-weight", "bold").css("text-align", "center").css("margin", "0")
                 }
             }
         },

@@ -30,6 +30,8 @@ const NavBar = () => {
                 let btn = $("#"+button.id)
                 btn.html(categories[i])
                 btn.css("opacity", "0")
+                    .css("width", "100%")
+                    .css("height", "100%")
                 el.options[i] = btn
             }
             el.showOptions();
