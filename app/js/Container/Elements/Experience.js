@@ -58,7 +58,7 @@ const Experience = () => {
                     if (i === 0) {
                         switch (key) {
                             case "period": text = document.createTextNode("April 2013 - August 2015"); break;
-                            case "pos": text = document.createTextNode("Vedeo Transmission Administrator"); break;
+                            case "pos": text = document.createTextNode("Video Transmission Administrator"); break;
                             case "cmp": text = document.createTextNode("Worked at SoftBank Telecom"); break;
                         }
                         el.content_0.push(obj)
