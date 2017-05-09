@@ -67,6 +67,18 @@ div {
     border-radius: 50%;
 }
 
+/*Skills*/
+.skillsBuffer {
+    width: 25%;
+    height: 100%;
+}
+.skillsContent {
+    width: 25%;
+    height: 100%;
+    font-size: 1em;
+    font-weight: bold;
+}
+
 /*Common*/
 .row {
     display: -ms-flexbox;

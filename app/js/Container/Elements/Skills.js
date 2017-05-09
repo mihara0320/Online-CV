@@ -42,15 +42,24 @@ const Skills = () => {
         },
         initInfo: () => {
             let self = $("#"+el.id)
+
+            let bufferL = document.createElement("div")
+            bufferL.className = "skillsBuffer"
+            self.append(bufferL)
+
             let data_0 = document.createElement("div")
             data_0.id = "skills_data_0"
-            data_0.className = "col"
+            data_0.className = "col skillsContent"
             self.append(data_0)
 
             let data_1 = document.createElement("div")
             data_1.id = "skills_data_1"
-            data_1.className = "col"
+            data_1.className = "col skillsContent"
             self.append(data_1)
+
+            let bufferR = document.createElement("div")
+            bufferR.className = "skillsBuffer"
+            self.append(bufferR)
 
             let temp = TEMPLATE()
             for (let key in temp) {
@@ -58,11 +67,6 @@ const Skills = () => {
                 info.id = "data_" + key
                 let container = $("#skills_data_0")
                 container.append(info)
-                container.css("height", "80%")
-                            .css("width", "50%")
-                            .css("font-size", "1em")
-                            .css("font-weight", "bold")
-                            .css("margin", "0")
 
                 let obj = $("#"+info.id)
                 obj.css("width", "100%")
@@ -80,7 +84,6 @@ const Skills = () => {
                 el.content_0.push(obj)
                 h3.appendChild(text);
                 obj.append(h3);
-                $("H3").css("font-size", "2em").css("font-weight", "bold").css("text-align", "center").css("margin", "0")
             }
 
             let temp_info = TEMPLATE_INFO()
@@ -89,11 +92,6 @@ const Skills = () => {
                 info.id = "data_" + key
                 let container = $("#skills_data_1")
                 container.append(info)
-                container.css("height", "80%")
-                            .css("width", "50%")
-                            .css("font-size", "1em")
-                            .css("font-weight", "bold")
-                            .css("margin", "0")
 
                 let obj = $("#"+info.id)
                 obj.css("width", "100%")
@@ -111,19 +109,20 @@ const Skills = () => {
                 el.content_1.push(obj)
                 h3.appendChild(text);
                 obj.append(h3);
-                $("H3").css("font-size", "2em").css("font-weight", "bold").css("text-align", "center").css("margin", "0")
             }
+            $("H3").css("font-size", "2em").css("font-weight", "bold").css("text-align", "center").css("margin", "0")
+
         },
         showPage: () => {
             eventEmitter.emit("Tween Started")
             let tween = new TimelineMax({onComplete: ()=>{ eventEmitter.emit("Tween Completed") }})
             for (var i = 0; i < el.content_0.length; i++) {
                 let text = el.content_0[i]
-                tween.fromTo(text, 0.1, {opacity : 0}, {opacity : 1})
+                tween.fromTo(text, 0.1, {scale : 0}, {scale : 1})
             }
             for (var i = 0; i < el.content_1.length; i++) {
                 let text = el.content_1[i]
-                tween.fromTo(text, 0.1, {opacity : 0}, {opacity : 1})
+                tween.fromTo(text, 0.1, {scale : 0}, {scale : 1})
             }
             tween.play();
         },
@@ -135,11 +134,13 @@ const Skills = () => {
             }})
             for (var i = 0; i < el.content_0.length; i++) {
                 let text = el.content_0[i]
-                tween.to(text, 0.05, {opacity : 0, x: + 100})
+                // tween.to(text, 0.05, {opacity : 0, x: + 100})
+                tween.to(text, 0.1,{scale: 0})
             }
             for (var i = 0; i < el.content_1.length; i++) {
                 let text = el.content_1[i]
-                tween.to(text, 0.05, {opacity : 0, x: -100})
+                // tween.to(text, 0.05, {opacity : 0, x: -100})
+                tween.to(text, 0.1, {scale:0})
             }
             tween.play();
         }
