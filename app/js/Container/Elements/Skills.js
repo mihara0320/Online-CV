@@ -87,7 +87,7 @@ const Skills = () => {
             for (let key in temp_info) {
                 let info = temp_info[key]
                 info.id = "data_" + key
-                let container = $("#skills_data_0")
+                let container = $("#skills_data_1")
                 container.append(info)
                 container.css("height", "80%")
                             .css("width", "50%")
