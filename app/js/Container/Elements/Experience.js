@@ -1,5 +1,5 @@
 import {eventEmitter} from '../../Controller'
-var GreenSock = require('gsap');
+
 
 const TEMPLATE = () => {
     let el = {

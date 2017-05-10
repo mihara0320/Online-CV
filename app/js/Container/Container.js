@@ -1,5 +1,5 @@
 import {General, Experience, Education, Skills} from './Elements'
-var GreenSock = require('gsap');
+
 
 const OPTIONS = {
     INITIAL: "initInfo",
