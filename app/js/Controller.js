@@ -1,7 +1,6 @@
 import {NavBar} from './NavBar'
 import {Container, OPTIONS} from './Container'
 var EventEmitter = require('eventemitter3');
-var $ = require('jQuery');
 
 const eventEmitter = new EventEmitter()
 

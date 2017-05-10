@@ -1,5 +1,4 @@
 import {eventEmitter} from '../../Controller'
-var $ = require('jQuery');
 var GreenSock = require('gsap');
 
 const TEMPLATE = () => {

@@ -1,5 +1,4 @@
 import {General, Experience, Education, Skills} from './Elements'
-var $ = require('jQuery');
 var GreenSock = require('gsap');
 
 const OPTIONS = {

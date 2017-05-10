@@ -1,4 +1,3 @@
-var $ = require('jQuery');
 var GreenSock = require('gsap');
 
 const NavBar = () => {
