@@ -1,3 +1,6 @@
+var $ = require('jQuery');
+var GreenSock = require('gsap');
+
 const NavBar = () => {
 
     let el = document.createElement('div');

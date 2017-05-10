@@ -1,6 +1,9 @@
 import {General, Experience, Education, Skills} from './Elements'
+var $ = require('jQuery');
+var GreenSock = require('gsap');
 
 const OPTIONS = {
+    INITIAL: "initInfo",
     GENERAL: "general",
     EXPERIENCE: "experience",
     EDUCATION: "education",
@@ -18,6 +21,22 @@ const Container = () => {
         experience: null,
         init: (container) => {
             container.append(el)
+            el.showInitInfo()
+        },
+        showInitInfo: () =>{
+            console.log('%c Show InitInfo ', 'background: #777; color: #bada55');
+            el.currentPage = OPTIONS.INITIAL
+            let div = document.createElement('div');
+            div.id = "initInfo"
+            $("#"+el.id).append(div)
+            let initInfo = $("#"+div.id)
+            initInfo.html("Click on any categories!")
+            initInfo.css("font-size", "2em")
+
+            let tween = new TimelineMax({repeat: 100})
+            tween.to(initInfo, 2, {opacity : 0})
+            tween.to(initInfo, 2, {opacity : 1})
+            tween.play();
         },
         showGeneral: () =>{
             console.log('%c Show General ', 'background: #777; color: #bada55');
@@ -44,7 +63,12 @@ const Container = () => {
             el.skills.init($("#container"))
         },
         clean: () => {
+
             switch (el.currentPage) {
+                case OPTIONS.INITIAL:
+
+                    $("#container").html("")
+                    break;
                 case OPTIONS.GENERAL:
                     el.general.cleanPage()
                     break;

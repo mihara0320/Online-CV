@@ -1,10 +1,11 @@
 import {eventEmitter} from '../../Controller'
+var $ = require('jQuery');
+var GreenSock = require('gsap');
 
 const General = () => {
     let el = document.createElement('div');
     el.id = "general"
     el.className = "col"
-
     Object.assign(el, {
         firstTime: true,
         up: null,

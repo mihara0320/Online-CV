@@ -1,4 +1,6 @@
 import {eventEmitter} from '../../Controller'
+var $ = require('jQuery');
+var GreenSock = require('gsap');
 
 const TEMPLATE = () => {
     let el = {
@@ -8,6 +10,7 @@ const TEMPLATE = () => {
         s3: document.createElement("div"),
         s4: document.createElement("div"),
         s5: document.createElement("div"),
+        s6: document.createElement("div"),
     }
     return el
 }
@@ -19,6 +22,7 @@ const TEMPLATE_INFO = () => {
         s3_info: document.createElement("div"),
         s4_info: document.createElement("div"),
         s5_info: document.createElement("div"),
+        s6_info: document.createElement("div"),
     }
     return el
 }
@@ -59,6 +63,7 @@ const Skills = () => {
 
             let bufferR = document.createElement("div")
             bufferR.className = "skillsBuffer"
+            bufferR.id = "skillsBufferR"
             self.append(bufferR)
 
             let temp = TEMPLATE()
@@ -79,6 +84,7 @@ const Skills = () => {
                     case "s3": text = document.createTextNode("Javascript"); break;
                     case "s4": text = document.createTextNode("HTML & CSS"); break;
                     case "s5": text = document.createTextNode("SQL"); break;
+                    case "s6": text = document.createTextNode("Source Code"); break;
                 }
                 text.id = "text_"+key
                 el.content_0.push(obj)
@@ -104,6 +110,12 @@ const Skills = () => {
                     case "s3_info": text = document.createTextNode("Basic++"); break;
                     case "s4_info": text = document.createTextNode("Basic+"); break;
                     case "s5_info": text = document.createTextNode("Basic"); break;
+                    case "s6_info":
+                        text = document.createElement("a")
+                        text.href = "https://github.com/mihara0320/Online-CV";
+                        let message = document.createTextNode("Source Code Available Here");
+                        text.appendChild(message)
+                        break;
                 }
                 text.id = "text_"+key
                 el.content_1.push(obj)

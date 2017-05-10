@@ -1,4 +1,4 @@
-
+var $ = require('jQuery');
 import {Controller} from './Controller'
 
 $(window).on('load', () => {
