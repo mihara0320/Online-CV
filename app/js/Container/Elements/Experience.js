@@ -102,7 +102,11 @@ const Experience = () => {
             }})
             for (var i = 0; i < el.content_0.length; i++) {
                 let text = el.content_0[i]
-                tween.to(text, 0.05, {opacity : 0, x: + 100})
+                tween.to(text, 0.07, {opacity : 0, x: - 100})
+            }
+            for (var i = 0; i < el.content_1.length; i++) {
+                let text = el.content_1[i]
+                tween.to(text, 0.07, {opacity : 0, x: + 100})
             }
 
             tween.play();

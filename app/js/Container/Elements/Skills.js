@@ -112,7 +112,7 @@ const Skills = () => {
                     case "s6_info":
                         text = document.createElement("a")
                         text.href = "https://github.com/mihara0320/Online-CV";
-                        let message = document.createTextNode("Source Code Available Here");
+                        let message = document.createTextNode("Available Here");
                         text.appendChild(message)
                         break;
                 }
@@ -129,11 +129,11 @@ const Skills = () => {
             let tween = new TimelineMax({onComplete: ()=>{ eventEmitter.emit("Tween Completed") }})
             for (var i = 0; i < el.content_0.length; i++) {
                 let text = el.content_0[i]
-                tween.fromTo(text, 0.1, {scale : 0}, {scale : 1})
+                tween.fromTo(text, 0.08, {scale : 0}, {scale : 1})
             }
             for (var i = 0; i < el.content_1.length; i++) {
                 let text = el.content_1[i]
-                tween.fromTo(text, 0.1, {scale : 0}, {scale : 1})
+                tween.fromTo(text, 0.08, {scale : 0}, {scale : 1})
             }
             tween.play();
         },
@@ -145,13 +145,11 @@ const Skills = () => {
             }})
             for (var i = 0; i < el.content_0.length; i++) {
                 let text = el.content_0[i]
-                // tween.to(text, 0.05, {opacity : 0, x: + 100})
-                tween.to(text, 0.1,{scale: 0})
+                tween.to(text, 0.05,{scale: 0})
             }
             for (var i = 0; i < el.content_1.length; i++) {
                 let text = el.content_1[i]
-                // tween.to(text, 0.05, {opacity : 0, x: -100})
-                tween.to(text, 0.1, {scale:0})
+                tween.to(text, 0.05, {scale:0})
             }
             tween.play();
         }
